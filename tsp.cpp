@@ -3,8 +3,8 @@
 #include <ctime>
 using namespace std;
 
-#define n 20 // Define a população como tendo 10 indivíduos
-#define p 9 // O número de cruzamentos por geração é igual a 4
+#define n 20 // Define a populaÃ§Ã£o como tendo 10 indivÃ­duos
+#define p 9 // O nÃºmero de cruzamentos por geraÃ§Ã£o Ã© igual a 4
 #define c 3 // Cada disputa do torneio possui 3 concorrentes
 
 struct Cromossomo
@@ -30,7 +30,7 @@ int main ()
     bool solucao = false;
     int pai1, pai2, aux=0, ger=1, indicefinal, melhorfitness;
     Cromossomo pop[n], pop2[n], filhos[2];
-    /// GERANDO A POPULAÇÃO INICIAL
+    /// GERANDO A POPULAÃ‡ÃƒO INICIAL
     for(int i=0; i<n; i++)
     {
         inicializa_vetores(pop[i].v);
@@ -39,16 +39,16 @@ int main ()
     cout << "=====================GERACAO " << ger << "=====================" << endl << endl;
     imprime(pop);
     ger++;
-    while(solucao==false) // Critério de parada adotado: Tempo
+    while(solucao==false) // CritÃ©rio de parada adotado: Tempo
     {
-        /// APLICANDO MUTAÇÃO
+        /// APLICANDO MUTAÃ‡ÃƒO
         int mut = rand()%n;
         mutacao(pop[mut].v);
         pop[mut].fitness = calcula_fitness(pop[mut].v);
-        /// COMEÇANDO AS ITERAÇÕES
+        /// COMEÃ‡ANDO AS ITERAÃ‡Ã•ES
         for(int i=0; i<p; i++)
         {
-            /// SELEÇÃO
+            /// SELEÃ‡ÃƒO
             pai1 = seleciona_pai_torneio(pop);
             pai2 = seleciona_pai_torneio(pop);
             /// CRUZAMENTO
@@ -71,10 +71,10 @@ int main ()
         cout << "=====================GERACAO " << ger << "=====================" << endl << endl;
         imprime(pop);
         ger++;
-        /// CHECANDO SOLUÇÃO
+        /// CHECANDO SOLUÃ‡ÃƒO
         clock_t end = clock();
         double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-        if(elapsed_secs>0.2)
+        if(elapsed_secs>0.6)
         {
             melhorfitness = pop[0].fitness;
             indicefinal = 0;
